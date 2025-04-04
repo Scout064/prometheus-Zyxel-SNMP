@@ -1,7 +1,7 @@
 # Prometheus-Zyxel-SNMP
 Prometheus and snmp_exporter config for use with Zyxel Network Devices.
 
-Ready to use configs for Prometheus and SNMP Exporter.
+Ready to use configs for Prometheus and SNMP Exporter. //
 For use with Zyxel Networks Devices.
 For example:
 Switches:
