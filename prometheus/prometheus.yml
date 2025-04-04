@@ -20,6 +20,7 @@ rule_files:
 scrape_configs:
   - job_name: snmp
     static_configs:
+    # Put your own devices here
       - targets:
           - 10.10.1.254
           - 10.10.1.1
@@ -39,9 +40,11 @@ scrape_configs:
           - __param_target
         target_label: instance
       - target_label: __address__
+        # IP Address of Server, if on the same Machine: put 127.0.0.1
         replacement: 10.10.1.247:9116
   - job_name: snmp_exporter
     static_configs:
       - targets:
+          # IP Address of Server, if on the same Machine: put 127.0.0.1
           - 10.10.1.247:9116
 
