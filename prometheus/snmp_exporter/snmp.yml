@@ -1,0 +1,640 @@
+# WARNING: This file was auto-generated using snmp_exporter generator, manual changes will be lost.
+auths:
+  public_v1:
+    community: public
+    security_level: noAuthNoPriv
+    auth_protocol: MD5
+    priv_protocol: DES
+    version: 1
+  public_v2:
+    community: public
+    security_level: noAuthNoPriv
+    auth_protocol: MD5
+    priv_protocol: DES
+    version: 2
+modules:
+  system:
+    walk:
+    - 1.3.6.1.2.1.1
+    metrics:
+    - name: sysDescr
+      oid: 1.3.6.1.2.1.1.1
+      type: DisplayString
+      help: A textual description of the entity - 1.3.6.1.2.1.1.1
+    - name: sysObjectID
+      oid: 1.3.6.1.2.1.1.2
+      type: OctetString
+      help: The vendor's authoritative identification of the network management subsystem
+        contained in the entity - 1.3.6.1.2.1.1.2
+    - name: sysUpTime
+      oid: 1.3.6.1.2.1.1.3
+      type: gauge
+      help: The time (in hundredths of a second) since the network management portion
+        of the system was last re-initialized. - 1.3.6.1.2.1.1.3
+    - name: sysContact
+      oid: 1.3.6.1.2.1.1.4
+      type: DisplayString
+      help: The textual identification of the contact person for this managed node,
+        together with information on how to contact this person - 1.3.6.1.2.1.1.4
+    - name: sysName
+      oid: 1.3.6.1.2.1.1.5
+      type: DisplayString
+      help: An administratively-assigned name for this managed node - 1.3.6.1.2.1.1.5
+    - name: sysLocation
+      oid: 1.3.6.1.2.1.1.6
+      type: DisplayString
+      help: The physical location of this node (e.g., 'telephone closet, 3rd floor')
+        - 1.3.6.1.2.1.1.6
+    - name: sysServices
+      oid: 1.3.6.1.2.1.1.7
+      type: gauge
+      help: A value which indicates the set of services that this entity may potentially
+        offer - 1.3.6.1.2.1.1.7
+    - name: sysORLastChange
+      oid: 1.3.6.1.2.1.1.8
+      type: gauge
+      help: The value of sysUpTime at the time of the most recent change in state
+        or value of any instance of sysORID. - 1.3.6.1.2.1.1.8
+    - name: sysORIndex
+      oid: 1.3.6.1.2.1.1.9.1.1
+      type: gauge
+      help: The auxiliary variable used for identifying instances of the columnar
+        objects in the sysORTable. - 1.3.6.1.2.1.1.9.1.1
+      indexes:
+      - labelname: sysORIndex
+        type: gauge
+      lookups:
+      - labels:
+        - sysORIndex
+        labelname: sysORDescr
+        oid: 1.3.6.1.2.1.1.9.1.3
+        type: DisplayString
+    - name: sysORID
+      oid: 1.3.6.1.2.1.1.9.1.2
+      type: OctetString
+      help: An authoritative identification of a capabilities statement with respect
+        to various MIB modules supported by the local SNMP application acting as a
+        command responder. - 1.3.6.1.2.1.1.9.1.2
+      indexes:
+      - labelname: sysORIndex
+        type: gauge
+      lookups:
+      - labels:
+        - sysORIndex
+        labelname: sysORDescr
+        oid: 1.3.6.1.2.1.1.9.1.3
+        type: DisplayString
+    - name: sysORDescr
+      oid: 1.3.6.1.2.1.1.9.1.3
+      type: DisplayString
+      help: A textual description of the capabilities identified by the corresponding
+        instance of sysORID. - 1.3.6.1.2.1.1.9.1.3
+      indexes:
+      - labelname: sysORIndex
+        type: gauge
+      lookups:
+      - labels:
+        - sysORIndex
+        labelname: sysORDescr
+        oid: 1.3.6.1.2.1.1.9.1.3
+        type: DisplayString
+    - name: sysORUpTime
+      oid: 1.3.6.1.2.1.1.9.1.4
+      type: gauge
+      help: The value of sysUpTime at the time this conceptual row was last instantiated.
+        - 1.3.6.1.2.1.1.9.1.4
+      indexes:
+      - labelname: sysORIndex
+        type: gauge
+      lookups:
+      - labels:
+        - sysORIndex
+        labelname: sysORDescr
+        oid: 1.3.6.1.2.1.1.9.1.3
+        type: DisplayString
+  zyxel_device:
+    walk:
+    - 1.3.6.1.4.1.890
+    metrics:
+    - name: vpnIpSecTotalThroughput
+      oid: 1.3.6.1.4.1.890.1.6.22.2.1
+      type: gauge
+      help: The VPN total throughput(B/s). - 1.3.6.1.4.1.890.1.6.22.2.1
+    - name: vpnStatusIndex
+      oid: 1.3.6.1.4.1.890.1.6.22.2.4.1.1
+      type: gauge
+      help: The table index of VPN connection. - 1.3.6.1.4.1.890.1.6.22.2.4.1.1
+      indexes:
+      - labelname: vpnStatusIndex
+        type: gauge
+    - name: vpnStatusConnectionName
+      oid: 1.3.6.1.4.1.890.1.6.22.2.4.1.2
+      type: DisplayString
+      help: The name of VPN connection. - 1.3.6.1.4.1.890.1.6.22.2.4.1.2
+      indexes:
+      - labelname: vpnStatusIndex
+        type: gauge
+    - name: vpnStatusGateway
+      oid: 1.3.6.1.4.1.890.1.6.22.2.4.1.3
+      type: DisplayString
+      help: The name of VPN gateway. - 1.3.6.1.4.1.890.1.6.22.2.4.1.3
+      indexes:
+      - labelname: vpnStatusIndex
+        type: gauge
+    - name: vpnStatusIPVersion
+      oid: 1.3.6.1.4.1.890.1.6.22.2.4.1.4
+      type: DisplayString
+      help: 'IP version of the VPN connection: either IPv4 or IPv6. - 1.3.6.1.4.1.890.1.6.22.2.4.1.4'
+      indexes:
+      - labelname: vpnStatusIndex
+        type: gauge
+    - name: vpnStatusActiveStatus
+      oid: 1.3.6.1.4.1.890.1.6.22.2.4.1.5
+      type: gauge
+      help: Activation status of VPN connection. - 1.3.6.1.4.1.890.1.6.22.2.4.1.5
+      indexes:
+      - labelname: vpnStatusIndex
+        type: gauge
+      enum_values:
+        0: inactive
+        1: active
+    - name: vpnStatusConnectStatus
+      oid: 1.3.6.1.4.1.890.1.6.22.2.4.1.6
+      type: gauge
+      help: Connection status of VPN connection. - 1.3.6.1.4.1.890.1.6.22.2.4.1.6
+      indexes:
+      - labelname: vpnStatusIndex
+        type: gauge
+      enum_values:
+        0: disconnected
+        1: connected
+    - name: vpnConnectionTotal
+      oid: 1.3.6.1.4.1.890.1.6.22.2.5.1
+      type: counter
+      help: Total number of VPN connection configured. - 1.3.6.1.4.1.890.1.6.22.2.5.1
+    - name: vpnConnectionActive
+      oid: 1.3.6.1.4.1.890.1.6.22.2.5.2
+      type: counter
+      help: Number of activated VPN connection. - 1.3.6.1.4.1.890.1.6.22.2.5.2
+    - name: vpnConnectionConnected
+      oid: 1.3.6.1.4.1.890.1.6.22.2.5.3
+      type: counter
+      help: Number of connected VPN connection. - 1.3.6.1.4.1.890.1.6.22.2.5.3
+    - name: vpnConnectionDisconnected
+      oid: 1.3.6.1.4.1.890.1.6.22.2.5.4
+      type: counter
+      help: Number of disconnected VPN connection - 1.3.6.1.4.1.890.1.6.22.2.5.4
+    - name: vpnSaMonitorIndex
+      oid: 1.3.6.1.4.1.890.1.6.22.2.6.1.1
+      type: gauge
+      help: The table index of VPN connection. - 1.3.6.1.4.1.890.1.6.22.2.6.1.1
+      indexes:
+      - labelname: vpnSaMonitorIndex
+        type: gauge
+    - name: vpnSaMonitorConnectionName
+      oid: 1.3.6.1.4.1.890.1.6.22.2.6.1.2
+      type: DisplayString
+      help: The name of VPN connection. - 1.3.6.1.4.1.890.1.6.22.2.6.1.2
+      indexes:
+      - labelname: vpnSaMonitorIndex
+        type: gauge
+    - name: vpnSaMonitorPolicy
+      oid: 1.3.6.1.4.1.890.1.6.22.2.6.1.3
+      type: DisplayString
+      help: The IPSec policy of current VPN connection. - 1.3.6.1.4.1.890.1.6.22.2.6.1.3
+      indexes:
+      - labelname: vpnSaMonitorIndex
+        type: gauge
+    - name: vpnSaMonitorUpTime
+      oid: 1.3.6.1.4.1.890.1.6.22.2.6.1.4
+      type: gauge
+      help: Up time (in seconds) of current VPN connection. - 1.3.6.1.4.1.890.1.6.22.2.6.1.4
+      indexes:
+      - labelname: vpnSaMonitorIndex
+        type: gauge
+    - name: vpnSaMonitorTimeout
+      oid: 1.3.6.1.4.1.890.1.6.22.2.6.1.5
+      type: gauge
+      help: Timeout (in seconds) of current VPN connection. - 1.3.6.1.4.1.890.1.6.22.2.6.1.5
+      indexes:
+      - labelname: vpnSaMonitorIndex
+        type: gauge
+    - name: vpnSaMonitorInPkts
+      oid: 1.3.6.1.4.1.890.1.6.22.2.6.1.6
+      type: counter
+      help: Number of in-bound packets of VPN connection. - 1.3.6.1.4.1.890.1.6.22.2.6.1.6
+      indexes:
+      - labelname: vpnSaMonitorIndex
+        type: gauge
+    - name: vpnSaMonitorInBytes
+      oid: 1.3.6.1.4.1.890.1.6.22.2.6.1.7
+      type: counter
+      help: Number of in-bound bytes of VPN connection. - 1.3.6.1.4.1.890.1.6.22.2.6.1.7
+      indexes:
+      - labelname: vpnSaMonitorIndex
+        type: gauge
+    - name: vpnSaMonitorOutPkts
+      oid: 1.3.6.1.4.1.890.1.6.22.2.6.1.8
+      type: counter
+      help: Number of out-bound packets of VPN connection. - 1.3.6.1.4.1.890.1.6.22.2.6.1.8
+      indexes:
+      - labelname: vpnSaMonitorIndex
+        type: gauge
+    - name: vpnSaMonitorOutBytes
+      oid: 1.3.6.1.4.1.890.1.6.22.2.6.1.9
+      type: counter
+      help: Number of out-bound bytes of VPN connection. - 1.3.6.1.4.1.890.1.6.22.2.6.1.9
+      indexes:
+      - labelname: vpnSaMonitorIndex
+        type: gauge
+    - name: sysSwPlatform
+      oid: 1.3.6.1.4.1.890.1.15.3.1.1
+      type: gauge
+      help: The software platform information. - 1.3.6.1.4.1.890.1.15.3.1.1
+      enum_values:
+        1: other
+        2: zynos
+        3: zld
+        4: uos
+    - name: sysSwMajorVersion
+      oid: 1.3.6.1.4.1.890.1.15.3.1.2
+      type: gauge
+      help: The major version of software platform. - 1.3.6.1.4.1.890.1.15.3.1.2
+    - name: sysSwMinorVersion
+      oid: 1.3.6.1.4.1.890.1.15.3.1.3
+      type: gauge
+      help: The minor version of software platform. - 1.3.6.1.4.1.890.1.15.3.1.3
+    - name: sysSwModel
+      oid: 1.3.6.1.4.1.890.1.15.3.1.4
+      type: DisplayString
+      help: The device model ID. - 1.3.6.1.4.1.890.1.15.3.1.4
+    - name: sysSwPatchNumber
+      oid: 1.3.6.1.4.1.890.1.15.3.1.5
+      type: gauge
+      help: The firmeare patch number. - 1.3.6.1.4.1.890.1.15.3.1.5
+    - name: sysSwVersionString
+      oid: 1.3.6.1.4.1.890.1.15.3.1.6
+      type: DisplayString
+      help: The detail software version. - 1.3.6.1.4.1.890.1.15.3.1.6
+    - name: sysSwDay
+      oid: 1.3.6.1.4.1.890.1.15.3.1.7
+      type: gauge
+      help: The day of software build date. - 1.3.6.1.4.1.890.1.15.3.1.7
+    - name: sysSwMonth
+      oid: 1.3.6.1.4.1.890.1.15.3.1.8
+      type: gauge
+      help: The month of software build date. - 1.3.6.1.4.1.890.1.15.3.1.8
+    - name: sysSwYear
+      oid: 1.3.6.1.4.1.890.1.15.3.1.9
+      type: gauge
+      help: The year of software build date. - 1.3.6.1.4.1.890.1.15.3.1.9
+    - name: sysProductFamily
+      oid: 1.3.6.1.4.1.890.1.15.3.1.10
+      type: DisplayString
+      help: The product line information. - 1.3.6.1.4.1.890.1.15.3.1.10
+    - name: sysProductModel
+      oid: 1.3.6.1.4.1.890.1.15.3.1.11
+      type: DisplayString
+      help: The device model name. - 1.3.6.1.4.1.890.1.15.3.1.11
+    - name: sysProductSerialNumber
+      oid: 1.3.6.1.4.1.890.1.15.3.1.12
+      type: DisplayString
+      help: The searial number of this device. - 1.3.6.1.4.1.890.1.15.3.1.12
+    - name: sysHwMajorVersion
+      oid: 1.3.6.1.4.1.890.1.15.3.1.13
+      type: gauge
+      help: The major version of hardware platform. - 1.3.6.1.4.1.890.1.15.3.1.13
+    - name: sysHwMinorVersion
+      oid: 1.3.6.1.4.1.890.1.15.3.1.14
+      type: gauge
+      help: The minor version of hardware platform. - 1.3.6.1.4.1.890.1.15.3.1.14
+    - name: sysHwVersionString
+      oid: 1.3.6.1.4.1.890.1.15.3.1.15
+      type: DisplayString
+      help: The detail hardware version. - 1.3.6.1.4.1.890.1.15.3.1.15
+    - name: sysCountryCode
+      oid: 1.3.6.1.4.1.890.1.15.3.1.16
+      type: DisplayString
+      help: System Country. - 1.3.6.1.4.1.890.1.15.3.1.16
+    - name: sysActiveSessionNum
+      oid: 1.3.6.1.4.1.890.1.15.3.1.19
+      type: gauge
+      help: The number of active session. - 1.3.6.1.4.1.890.1.15.3.1.19
+    - name: sysMgmtReboot
+      oid: 1.3.6.1.4.1.890.1.15.3.2.1
+      type: gauge
+      help: ' - 1.3.6.1.4.1.890.1.15.3.2.1'
+      enum_values:
+        0: running
+        1: reboot
+    - name: sysMgmtConfigSave
+      oid: 1.3.6.1.4.1.890.1.15.3.2.2
+      type: gauge
+      help: ' - 1.3.6.1.4.1.890.1.15.3.2.2'
+      enum_values:
+        0: running
+        1: save
+    - name: sysMgmtRestoreDefaultConfig
+      oid: 1.3.6.1.4.1.890.1.15.3.2.3
+      type: gauge
+      help: ' - 1.3.6.1.4.1.890.1.15.3.2.3'
+      enum_values:
+        0: running
+        1: restore
+    - name: sysMgmtCPUUsage
+      oid: 1.3.6.1.4.1.890.1.15.3.2.4
+      type: gauge
+      help: Device CPU usage (%) - 1.3.6.1.4.1.890.1.15.3.2.4
+    - name: sysMgmtMemUsage
+      oid: 1.3.6.1.4.1.890.1.15.3.2.5
+      type: gauge
+      help: Device memory usage (%) - 1.3.6.1.4.1.890.1.15.3.2.5
+    - name: sysMgmtFlashUsage
+      oid: 1.3.6.1.4.1.890.1.15.3.2.6
+      type: gauge
+      help: Device flash usage (%) - 1.3.6.1.4.1.890.1.15.3.2.6
+    - name: sysMgmtCPU5SecUsage
+      oid: 1.3.6.1.4.1.890.1.15.3.2.7
+      type: gauge
+      help: Average CPU usage in 5 seconds - 1.3.6.1.4.1.890.1.15.3.2.7
+    - name: sysMgmtCPU1MinUsage
+      oid: 1.3.6.1.4.1.890.1.15.3.2.8
+      type: gauge
+      help: Average CPU usage in 1 minute - 1.3.6.1.4.1.890.1.15.3.2.8
+    - name: sysMgmtCPU5MinUsage
+      oid: 1.3.6.1.4.1.890.1.15.3.2.9
+      type: gauge
+      help: Average CPU usage in 5 minutes - 1.3.6.1.4.1.890.1.15.3.2.9
+    - name: sysMgmtBootupConfigIndex
+      oid: 1.3.6.1.4.1.890.1.15.3.2.10
+      type: gauge
+      help: ' - 1.3.6.1.4.1.890.1.15.3.2.10'
+    - name: sysMgmtBootupImageIndex
+      oid: 1.3.6.1.4.1.890.1.15.3.2.11
+      type: gauge
+      help: ' - 1.3.6.1.4.1.890.1.15.3.2.11'
+    - name: sysUserNumber
+      oid: 1.3.6.1.4.1.890.1.15.3.2.16.1
+      type: gauge
+      help: The number of current login users - 1.3.6.1.4.1.890.1.15.3.2.16.1
+    - name: sysMgmtFPCPUUsage
+      oid: 1.3.6.1.4.1.890.1.15.3.2.21
+      type: gauge
+      help: Device Fast Path CPU usage (%) - 1.3.6.1.4.1.890.1.15.3.2.21
+    - name: zyHwMonitorFanRpmIndex
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.1.1.1
+      type: gauge
+      help: Index of fan. - 1.3.6.1.4.1.890.1.15.3.26.1.1.1.1
+      indexes:
+      - labelname: zyHwMonitorFanRpmIndex
+        type: gauge
+    - name: zyHwMonitorFanRpmDescription
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.1.1.2
+      type: DisplayString
+      help: Fan Description - 1.3.6.1.4.1.890.1.15.3.26.1.1.1.2
+      indexes:
+      - labelname: zyHwMonitorFanRpmIndex
+        type: gauge
+    - name: zyHwMonitorFanRpmCurrentValue
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.1.1.3
+      type: gauge
+      help: Current speed in Revolutions Per Minute (RPM) on the fan. - 1.3.6.1.4.1.890.1.15.3.26.1.1.1.3
+      indexes:
+      - labelname: zyHwMonitorFanRpmIndex
+        type: gauge
+    - name: zyHwMonitorFanRpmMaxValue
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.1.1.4
+      type: gauge
+      help: Maximum speed measured in Revolutions Per Minute (RPM) on the fan. - 1.3.6.1.4.1.890.1.15.3.26.1.1.1.4
+      indexes:
+      - labelname: zyHwMonitorFanRpmIndex
+        type: gauge
+    - name: zyHwMonitorFanRpmMinValue
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.1.1.5
+      type: gauge
+      help: Minimum speed measured in Revolutions Per Minute (RPM) on the fan. - 1.3.6.1.4.1.890.1.15.3.26.1.1.1.5
+      indexes:
+      - labelname: zyHwMonitorFanRpmIndex
+        type: gauge
+    - name: zyHwMonitorFanRpmLowThreshold
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.1.1.6
+      type: gauge
+      help: The minimum speed at which a normal fan should work. - 1.3.6.1.4.1.890.1.15.3.26.1.1.1.6
+      indexes:
+      - labelname: zyHwMonitorFanRpmIndex
+        type: gauge
+    - name: zyHwMonitorFanRpmStatus
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.1.1.7
+      type: DisplayString
+      help: '''Normal'' indicates that this fan is functioning above the minimum speed
+        - 1.3.6.1.4.1.890.1.15.3.26.1.1.1.7'
+      indexes:
+      - labelname: zyHwMonitorFanRpmIndex
+        type: gauge
+    - name: zyHwMonitorFanRpmDetect
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.1.1.8
+      type: DisplayString
+      help: ''' '' indicates that no detection - 1.3.6.1.4.1.890.1.15.3.26.1.1.1.8'
+      indexes:
+      - labelname: zyHwMonitorFanRpmIndex
+        type: gauge
+    - name: zyHwMonitorTemperatureIndex
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.2.1.1
+      type: gauge
+      help: Index of temperature unit. - 1.3.6.1.4.1.890.1.15.3.26.1.2.1.1
+      indexes:
+      - labelname: zyHwMonitorTemperatureIndex
+        type: gauge
+    - name: zyHwMonitorTemperatureDescription
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.2.1.2
+      type: DisplayString
+      help: Temperature Description - 1.3.6.1.4.1.890.1.15.3.26.1.2.1.2
+      indexes:
+      - labelname: zyHwMonitorTemperatureIndex
+        type: gauge
+    - name: zyHwMonitorTemperatureCurrentValue
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.2.1.3
+      type: gauge
+      help: The current temperature measured at this sensor. - 1.3.6.1.4.1.890.1.15.3.26.1.2.1.3
+      indexes:
+      - labelname: zyHwMonitorTemperatureIndex
+        type: gauge
+    - name: zyHwMonitorTemperatureMaxValue
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.2.1.4
+      type: gauge
+      help: The maximum temperature measured at this sensor. - 1.3.6.1.4.1.890.1.15.3.26.1.2.1.4
+      indexes:
+      - labelname: zyHwMonitorTemperatureIndex
+        type: gauge
+    - name: zyHwMonitorTemperatureMinValue
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.2.1.5
+      type: gauge
+      help: The minimum temperature measured at this sensor. - 1.3.6.1.4.1.890.1.15.3.26.1.2.1.5
+      indexes:
+      - labelname: zyHwMonitorTemperatureIndex
+        type: gauge
+    - name: zyHwMonitorTemperatureHighThreshold
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.2.1.6
+      type: gauge
+      help: The upper temperature limit at this sensor. - 1.3.6.1.4.1.890.1.15.3.26.1.2.1.6
+      indexes:
+      - labelname: zyHwMonitorTemperatureIndex
+        type: gauge
+    - name: zyHwMonitorTemperatureStatus
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.2.1.7
+      type: DisplayString
+      help: '''Normal'' indicates temperatures below the threshold and ''Error'' for
+        those above. - 1.3.6.1.4.1.890.1.15.3.26.1.2.1.7'
+      indexes:
+      - labelname: zyHwMonitorTemperatureIndex
+        type: gauge
+    - name: zyHwMonitorVoltageIndex
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.3.1.1
+      type: gauge
+      help: Index of voltage. - 1.3.6.1.4.1.890.1.15.3.26.1.3.1.1
+      indexes:
+      - labelname: zyHwMonitorVoltageIndex
+        type: gauge
+    - name: zyHwMonitorVoltageDescription
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.3.1.2
+      type: DisplayString
+      help: Voltage Description - 1.3.6.1.4.1.890.1.15.3.26.1.3.1.2
+      indexes:
+      - labelname: zyHwMonitorVoltageIndex
+        type: gauge
+    - name: zyHwMonitorVoltageCurrentValue
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.3.1.3
+      type: gauge
+      help: The current voltage reading. - 1.3.6.1.4.1.890.1.15.3.26.1.3.1.3
+      indexes:
+      - labelname: zyHwMonitorVoltageIndex
+        type: gauge
+    - name: zyHwMonitorVoltageMaxValue
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.3.1.4
+      type: gauge
+      help: The maximum voltage measured at this point. - 1.3.6.1.4.1.890.1.15.3.26.1.3.1.4
+      indexes:
+      - labelname: zyHwMonitorVoltageIndex
+        type: gauge
+    - name: zyHwMonitorVoltageMinValue
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.3.1.5
+      type: gauge
+      help: The minimum voltage measured at this point. - 1.3.6.1.4.1.890.1.15.3.26.1.3.1.5
+      indexes:
+      - labelname: zyHwMonitorVoltageIndex
+        type: gauge
+    - name: zyHwMonitorVoltageNominalValue
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.3.1.6
+      type: gauge
+      help: The normal voltage at which the switch work. - 1.3.6.1.4.1.890.1.15.3.26.1.3.1.6
+      indexes:
+      - labelname: zyHwMonitorVoltageIndex
+        type: gauge
+    - name: zyHwMonitorVoltageLowThreshold
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.3.1.7
+      type: gauge
+      help: The minimum voltage at which the switch should work. - 1.3.6.1.4.1.890.1.15.3.26.1.3.1.7
+      indexes:
+      - labelname: zyHwMonitorVoltageIndex
+        type: gauge
+    - name: zyHwMonitorVoltageStatus
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.3.1.8
+      type: DisplayString
+      help: '''Normal'' indicates that the voltage is within an acceptable operating
+        range at this point; otherwise ''Error'' is displayed. - 1.3.6.1.4.1.890.1.15.3.26.1.3.1.8'
+      indexes:
+      - labelname: zyHwMonitorVoltageIndex
+        type: gauge
+    - name: zyHwMonitorPowerSourceMode
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.4.1
+      type: DisplayString
+      help: The current power source reading (AC prefer, load-sharing). - 1.3.6.1.4.1.890.1.15.3.26.1.4.1
+    - name: zyHwMonitorPowerSourceIndex
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.4.2.1.1
+      type: gauge
+      help: Index of power source. - 1.3.6.1.4.1.890.1.15.3.26.1.4.2.1.1
+      indexes:
+      - labelname: zyHwMonitorPowerSourceIndex
+        type: gauge
+    - name: zyHwMonitorPowerSourceType
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.4.2.1.2
+      type: DisplayString
+      help: The current power source type (AC/DC). - 1.3.6.1.4.1.890.1.15.3.26.1.4.2.1.2
+      indexes:
+      - labelname: zyHwMonitorPowerSourceIndex
+        type: gauge
+    - name: zyHwMonitorPowerSourceStatus
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.4.2.1.3
+      type: DisplayString
+      help: The current power source status (normal, error, absent, present, active,
+        standby, N/A). - 1.3.6.1.4.1.890.1.15.3.26.1.4.2.1.3
+      indexes:
+      - labelname: zyHwMonitorPowerSourceIndex
+        type: gauge
+    - name: zyHwMonitorPowerSourceDescription
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.4.2.1.4
+      type: DisplayString
+      help: Power source Description. - 1.3.6.1.4.1.890.1.15.3.26.1.4.2.1.4
+      indexes:
+      - labelname: zyHwMonitorPowerSourceIndex
+        type: gauge
+    - name: zyHwMonitorPowerSourcePreviousStatus
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.4.2.1.5
+      type: DisplayString
+      help: Power source Previous Status (normal/error/absent/present). - 1.3.6.1.4.1.890.1.15.3.26.1.4.2.1.5
+      indexes:
+      - labelname: zyHwMonitorPowerSourceIndex
+        type: gauge
+    - name: zyHwMonitorEtherPortIndex
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.5.1.1
+      type: gauge
+      help: Index of the ethernet port. - 1.3.6.1.4.1.890.1.15.3.26.1.5.1.1
+      indexes:
+      - labelname: zyHwMonitorEtherPortIndex
+        type: gauge
+    - name: zyHwMonitorEtherPortLinkStatus
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.5.1.2
+      type: gauge
+      help: Status the ethernet port. - 1.3.6.1.4.1.890.1.15.3.26.1.5.1.2
+      indexes:
+      - labelname: zyHwMonitorEtherPortIndex
+        type: gauge
+      enum_values:
+        0: down
+        1: up
+    - name: zyHwMonitorEtherPortLinkSpeed
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.5.1.3
+      type: gauge
+      help: Speed of the ethernet port. - 1.3.6.1.4.1.890.1.15.3.26.1.5.1.3
+      indexes:
+      - labelname: zyHwMonitorEtherPortIndex
+        type: gauge
+    - name: zyHwMonitorEtherPortDuplexMode
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.5.1.4
+      type: gauge
+      help: Duplex mode of the ethernet port. - 1.3.6.1.4.1.890.1.15.3.26.1.5.1.4
+      indexes:
+      - labelname: zyHwMonitorEtherPortIndex
+        type: gauge
+      enum_values:
+        0: half-duplex
+        1: full-duplex
+    - name: zyHwMonitorEtherPortLinkUpTime
+      oid: 1.3.6.1.4.1.890.1.15.3.26.1.5.1.5
+      type: gauge
+      help: Link up time of the ethernet port. - 1.3.6.1.4.1.890.1.15.3.26.1.5.1.5
+      indexes:
+      - labelname: zyHwMonitorEtherPortIndex
+        type: gauge
+    - name: zyHwMonitorTrapPowerSourceErrorType
+      oid: 1.3.6.1.4.1.890.1.15.3.26.3.1
+      type: DisplayString
+      help: There are the error type of power source. - 1.3.6.1.4.1.890.1.15.3.26.3.1
+    - name: zyHwMonitorFanControlSfpDetectionState
+      oid: 1.3.6.1.4.1.890.1.15.3.26.4.1
+      type: gauge
+      help: Enable/disable the fan control action to perform when the switch SFP module
+        temperature reach warm high limitation - 1.3.6.1.4.1.890.1.15.3.26.4.1
+      enum_values:
+        1: enabled
+        2: disabled
